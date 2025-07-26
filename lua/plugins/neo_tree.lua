@@ -13,7 +13,7 @@ return {
         -- Toggle Neo-tree (close it)
         vim.cmd("Neotree toggle")
       else
-        -- Focus Neo-tree (open it if not already)
+        --  Neo-tree (open it if not already)
         vim.cmd("Neotree reveal")
       end
     end, { silent = true })
