@@ -7,15 +7,18 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    vim.keymap.set("n", "<C-n>", function()
-      local ft = vim.bo.filetype
-      if ft == "neo-tree" then
-        -- Toggle Neo-tree (close it)
-        vim.cmd("Neotree toggle")
-      else
-        --  Neo-tree (open it if not already)
+    require("neo-tree").setup({
+      event_handlers= {
+        {
+          event="file_opened",
+          handler = function(file_path)
+            require("neo-tree.command").execute({action = "close" })
+          end,
+        },
+      },
+    })
+    vim.keymap.set("n", "<leader>e", function()
         vim.cmd("Neotree reveal")
-      end
     end, { silent = true })
   end
 }
