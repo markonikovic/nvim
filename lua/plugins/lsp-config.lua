@@ -10,7 +10,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "astro", "emmet_language_server" },
+        ensure_installed = { "lua_ls", "ts_ls", "astro", "emmet_language_server","gopls"},
       })
     end,
   },
@@ -18,6 +18,7 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
+      lspconfig.gopls.setup({})
       lspconfig.lua_ls.setup({})
       lspconfig.ts_ls.setup({})
       lspconfig.astro.setup({})
